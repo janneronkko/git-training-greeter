@@ -22,6 +22,14 @@ def parseArgs():
   )
 
   parser.add_argument(
+    '-r',
+    '--random-greetin',
+    dest = 'randomGreetin',
+    default = False,
+    action = 'store_true',
+  )
+
+  parser.add_argument(
     'name',
     nargs = '?',
     default = 'World',
