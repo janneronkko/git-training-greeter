@@ -62,7 +62,13 @@ class Greeter( object ):
     print( '{greeting} {name}!'.format( greeting = greeting, name = name ) )
 
   def _greeting( self ):
-    return self.args.greeting
+    if self.args.randomGreetin:
+      import time
+      t = time.time()
+      t = t * 10
+      return self.RandomGreetings[ int( t ) % len( self.RandomGreetings ) ]
+    else:
+      return self.args.greeting
 
   def _names( self ):
     # We currently support only single name
