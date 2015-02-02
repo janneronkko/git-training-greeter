@@ -18,7 +18,7 @@ def parseArgs():
   parser.add_argument(
     '-g',
     '--greeting',
-    default = 'Hello',
+    default = 'Hi',
   )
 
   parser.add_argument(
