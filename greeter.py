@@ -30,6 +30,17 @@ def parseArgs():
   return parser.parse_args()
 
 class Greeter( object ):
+  RandomGreetings = [
+    'Hello',
+    'Hi',
+    'Good to see you',
+    'Nice to see you',
+    'Good morning',
+    'Good evening',
+    'It\'s nice to meet you',
+    'I\'m pleased to meet you',
+  ]
+
   def __init__( self, args ):
     object.__init__( self )
 
