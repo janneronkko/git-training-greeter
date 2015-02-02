@@ -8,7 +8,9 @@ import argparse
 def main():
   args = parseArgs()
 
-  print( '{greeting} {name}!'.format( greeting = args.greeting, name = args.name ) )
+  greeter = Greeter( args )
+
+  greeter()
 
 def parseArgs():
   parser = argparse.ArgumentParser( description = 'Greeter - An Example Application For Vincit Git Trainings' )
@@ -26,6 +28,18 @@ def parseArgs():
   )
 
   return parser.parse_args()
+
+class Greeter( object ):
+  def __init__( self, args ):
+    object.__init__( self )
+
+    self.args = args
+
+  def __call__( self ):
+    self._greet( self.args.greeting, self.args.name )
+
+  def _greet( self, greeting, name ):
+    print( '{greeting} {name}!'.format( greeting = greeting, name = name ) )
 
 if __name__ == '__main__':
   main()
