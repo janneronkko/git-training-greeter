@@ -22,6 +22,14 @@ def parseArgs():
   )
 
   parser.add_argument(
+    '-r',
+    '--random-greetin',
+    dest = 'randomGreetin',
+    default = False,
+    action = 'store_true',
+  )
+
+  parser.add_argument(
     'name',
     nargs = '?',
     default = 'World',
@@ -30,6 +38,17 @@ def parseArgs():
   return parser.parse_args()
 
 class Greeter( object ):
+  RandomGreetings = [
+    'Hello',
+    'Hi',
+    'Good to see you',
+    'Nice to see you',
+    'Good morning',
+    'Good evening',
+    'It\'s nice to meet you',
+    'I\'m pleased to meet you',
+  ]
+
   def __init__( self, args ):
     object.__init__( self )
 
@@ -43,7 +62,13 @@ class Greeter( object ):
     print( '{greeting} {name}!'.format( greeting = greeting, name = name ) )
 
   def _greeting( self ):
-    return self.args.greeting
+    if self.args.randomGreetin:
+      import time
+      t = time.time()
+      t = t * 10
+      return self.RandomGreetings[ int( t ) % len( self.RandomGreetings ) ]
+    else:
+      return self.args.greeting
 
   def _names( self ):
     # We currently support only single name
