@@ -8,10 +8,16 @@ import argparse
 def main():
   args = parseArgs()
 
-  print( 'Hello {name}!'.format( name = args.name ) )
+  print( '{greeting} {name}!'.format( greeting = args.greeting, name = args.name ) )
 
 def parseArgs():
   parser = argparse.ArgumentParser( description = 'Greeter - An Example Application For Vincit Git Trainings' )
+
+  parser.add_argument(
+    '-g',
+    '--greeting',
+    default = 'Hello',
+  )
 
   parser.add_argument(
     'name',
