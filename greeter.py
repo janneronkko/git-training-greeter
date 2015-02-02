@@ -1,4 +1,3 @@
-#! /usr/bin/env python
 
 from __future__ import division, print_function, unicode_literals, absolute_import
 
@@ -20,7 +19,4 @@ def parseArgs():
   )
 
   return parser.parse_args()
-
-if __name__ == '__main__':
-  main()
 
