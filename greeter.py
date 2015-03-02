@@ -22,9 +22,10 @@ def parseArgs():
   )
 
   parser.add_argument(
-    'name',
-    nargs = '?',
-    default = 'World',
+    'names',
+    metavar = 'names',
+    nargs = '*',
+    default = [ 'World' ],
   )
 
   return parser.parse_args()
@@ -46,8 +47,7 @@ class Greeter( object ):
     return self.args.greeting
 
   def _names( self ):
-    # We currently support only single name
-    yield self.args.name
+    return self.args.names
 
 if __name__ == '__main__':
   main()

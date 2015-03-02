@@ -16,7 +16,7 @@ class TestGreeter( TestCase ):
 
     self.args = mock.Mock()
     self.args.greeting = mock.sentinel.Greeting
-    self.args.name = mock.sentinel.Name
+    self.args.names = [ mock.sentinel.Name1, mock.sentinel.Name2 ]
 
     self.greeter = greeter.Greeter( self.args )
     self.greeter._greet = mock.Mock()
@@ -24,5 +24,11 @@ class TestGreeter( TestCase ):
   def testGreeting( self ):
     self.greeter()
 
-    self.greeter._greet.assert_called_once_with( mock.sentinel.Greeting, mock.sentinel.Name )
+    self.assertListEqual(
+      self.greeter._greet.call_args_list,
+      [
+        mock.call( mock.sentinel.Greeting, mock.sentinel.Name1 ),
+        mock.call( mock.sentinel.Greeting, mock.sentinel.Name2 ),
+      ]
+    )
 
