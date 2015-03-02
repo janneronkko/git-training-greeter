@@ -36,10 +36,18 @@ class Greeter( object ):
     self.args = args
 
   def __call__( self ):
-    self._greet( self.args.greeting, self.args.name )
+    for name in self._names():
+      self._greet( self._greeting(), name )
 
   def _greet( self, greeting, name ):
     print( '{greeting} {name}!'.format( greeting = greeting, name = name ) )
+
+  def _greeting( self ):
+    return self.args.greeting
+
+  def _names( self ):
+    # We currently support only single name
+    yield self.args.name
 
 if __name__ == '__main__':
   main()
